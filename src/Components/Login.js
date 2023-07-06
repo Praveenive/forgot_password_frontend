@@ -10,7 +10,7 @@ export default function Login() {
   const navigate = useNavigate()
   const handleLogin = async()=>{
     const loginDetails = {email,password}
-    const response = await fetch(`http://localhost:9000/user/login`,{
+    const response = await fetch(`https://forgot-password-neon.vercel.app/user/login`,{
       method:"POST",
       body:JSON.stringify(loginDetails),
       headers:{
@@ -34,7 +34,7 @@ export default function Login() {
         <TextField id="email" label="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value)}  variant="filled" /><br/><br/>
       <TextField type="password"  label="Enter Password" variant="filled" value={password}
        onChange={(e)=>setPassword(e.target.value)}/>   <br/><br/>
-       <a href='/forgot'className='forgot'>Forgot password</a> <br/><br/>
+       <Button onClick={()=>navigate("/forgot")} >Forgot password</Button> <br/><br/>
       
       <Button variant="contained" onClick={handleLogin}>Login</Button>
       <p>Don't have an  account yet?</p>

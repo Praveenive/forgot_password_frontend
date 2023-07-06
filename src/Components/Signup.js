@@ -13,7 +13,7 @@ export default function Signup() {
     const newStudent = {
       firstname,lastname,email,password
     }
-    const response = await fetch(`http://localhost:9000/user/signup`,{
+    const response = await fetch(`https://forgot-password-neon.vercel.app/user/signup`,{
       method:"POST",
       body:JSON.stringify(newStudent),
       headers:{
@@ -26,7 +26,7 @@ export default function Signup() {
         setError(data.message)
       }
       else{
-      navigate("/login")
+      navigate("/")
   }}
 
   return (

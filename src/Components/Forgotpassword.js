@@ -1,13 +1,14 @@
 
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
 export default function Forgotpassword() {
     const [email,setEmail] = useState("")
     const [error,setError] = useState("")
+    const [message,setMessage] = useState("")
     const update = {email}
     const handleForgot = async()=>{
-        const response = await fetch(`http://localhost:9000/reset/forgot`,{
+        const response = await fetch(`https://forgot-password-neon.vercel.app/reset/forgot`,{
             method:"POST",
             body:JSON.stringify(update),
             headers:{
@@ -18,8 +19,10 @@ export default function Forgotpassword() {
         console.log(data)
         if(!data){
             setError(data.message)
+            setMessage(" ")
           }
           setError(" ")
+          setMessage(data.message)
     }
   return (
     <div>
@@ -28,6 +31,8 @@ export default function Forgotpassword() {
         <TextField type="email"  label="Enter Email" variant="filled" value={email}
        onChange={(e)=>setEmail(e.target.value)}/><br/><br/>
        <Button variant='contained' onClick={handleForgot}>Submit</Button>
+       {error?<Typography>{error}</Typography>:" "}
+       {message?<Typography>{message}</Typography>:" "}
     </div>
   )
 }
