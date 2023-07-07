@@ -5,6 +5,7 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import Resetpassword from './Components/Resetpassword';
 import Signup from './Components/Signup';
+// import { HashRouter } from "react-router-dom";
 
 function App() {
   return (
